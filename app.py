@@ -4,6 +4,13 @@ import cv2
 import rasterio
 import matplotlib.pyplot as plt
 
+# tambahan
+def raw_image():
+    plt.imshow(cmap='gray')
+    plt.colorbar()
+    plt.title(f'Raw Image')
+    plt.axis('off')
+
 def display_image(band_data, band_index):
     """Display a single band image."""
     # Normalize the band data for better visualization
@@ -34,6 +41,7 @@ def main():
             st.write("**Image Dimensions:**", src.width, "x", src.height)
             st.write("**Number of Bands:**", src.count)
             st.write("**Coordinate Reference System:**", src.crs)
+            st.write("**Pixel:**",)
 
             # Visualize Each Band
             st.write("**Band Visualizations:**")
@@ -59,6 +67,12 @@ def main():
                 st.pyplot(fig_rgb)
             else:
                 st.warning("This image does not contain enough bands for RGB visualization.")
+
+            # Display Raw Image
+            st.subheader('Raw Image')
+            fig_raw, ax_raw = plt.subplots()
+            raw_image()
+            st.pyplot(fig_raw)
 
 if __name__ == "__main__":
     main()
