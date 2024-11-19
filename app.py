@@ -3,13 +3,9 @@ import numpy as np
 import cv2
 import rasterio
 import matplotlib.pyplot as plt
+from rasterio.plot import show
 
 # tambahan
-def raw_image():
-    plt.imshow(cmap='gray')
-    plt.colorbar()
-    plt.title(f'Raw Image')
-    plt.axis('off')
 
 def display_image(band_data, band_index):
     """Display a single band image."""
@@ -71,7 +67,7 @@ def main():
             # Display Raw Image
             st.subheader('Raw Image')
             fig_raw, ax_raw = plt.subplots()
-            raw_image()
+            show(src, ax=ax_raw)
             st.pyplot(fig_raw)
 
 if __name__ == "__main__":
